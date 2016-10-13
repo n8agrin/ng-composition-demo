@@ -6,12 +6,10 @@ ng.module('buttons', [])
 	return {
 		restrict: 'E',
 		controller: function() {
-			this.counter = 0
-
+			this.counter = 0;
 			this.increment = function() {
 				this.counter = this.counter + 1;
-			}.bind(this)
-
+			}.bind(this);
 		},
 		controllerAs: 'counterCtrl',
 		template: "<div><h1>Counter</h1><h2>{{counterCtrl.counter}}</h2><my-counter-button action='counterCtrl.increment' double-value='counterCtrl.counter'></my-counter-button></div>"
@@ -25,9 +23,11 @@ ng.module('buttons', [])
 			action: '=',
 			doubleValue: '='
 		},
-		controller: function() {},
-		controllerAs: 'myCounterButtonCtrl',
-		bindToController: true,
-		template: "<div><h1>Double</h1><h2>{{myCounterButtonCtrl.doubleValue * 2}}</h2><button ng-click='myCounterButtonCtrl.action()'>Click Me!</button></div>"
+		controller: ['$scope', function($scope) {
+			$scope.$watch('doubleValue', function(n, o) {
+				console.log('doubleValue changed to', $scope.doubleValue);
+			});
+		}],
+		template: "<div><h1>Double</h1><h2>{{doubleValue * 2}}</h2><button ng-click='action()'>Click Me!</button></div>"
 	}
 });

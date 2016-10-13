@@ -1,0 +1,24 @@
+{
+  "name": "ng-buttons",
+  "version": "0.0.1",
+  "description": "demo",
+  "main": "index.js",
+  "scripts": {
+    "build": "node_modules/webpack/bin/webpack.js --config webpack.package.js",
+    "dev": "npm run watch & npm run serve",
+    "serve": "node_modules/http-server/bin/http-server ./build",
+    "start": "npm run build && npm run serve",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "node_modules/webpack/bin/webpack.js --config webpack.package.js --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.5.8"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^2.22.0",
+    "http-server": "^0.9.0",
+    "webpack": "^1.13.2"
+  }
+}
